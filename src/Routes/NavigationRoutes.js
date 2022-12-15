@@ -5,14 +5,14 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import MainNavigation from "../shared/MainNavigation";
+import MainNavigation from "../shared/Navigation/MainNavigation";
 
 import * as pathName from "./Path";
-import Spinner from "../shared/Spinner";
+import Spinner from "../shared/UIElements/Spinner";
 
-const Users = lazy(() => import("../users/Users"));
-// const Signup = lazy(() => import("./Signup"));
-// const Login = lazy(() => import("./Login"));
+const Users = lazy(() => import("../components/users/Users"));
+const UserPlaces = lazy(() => import("../components/places/UserPlaces"));
+const PageNotFound = lazy(() => import("../components/404/404"));
 
 const NavigationRoutes = () => {
   return (
@@ -22,13 +22,12 @@ const NavigationRoutes = () => {
         <Suspense fallback={<Spinner />}>
           <Routes>
             <Route path={pathName.users} element={<Users />} />
-            {/* <Route path={pathName.signup} element={<Signup />} /> */}
-            {/* <Route path={pathName.login} element={<Login />} /> */}
-            {/* <Route path={pathName.notFound} element={<NotFound />} /> */}
+            <Route path={pathName.userPlaces} element={<UserPlaces />} />
             <Route
               path={pathName.errorPage}
               element={<Navigate to={pathName.notFound} replace />}
             />
+            {/* <Route path={pathName.notFound} element={<PageNotFound />} /> */}
           </Routes>
         </Suspense>
       </main>

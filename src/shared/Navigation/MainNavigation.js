@@ -1,34 +1,72 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Navigation } from "./Navigation";
+import MainHeader from "./MainHeader";
+import SideDrawer from "./../UIElements/SideDrawer";
+import Backdrop from "../UIElements/Backdrop";
+import { Link } from "react-router-dom";
+import * as pathName from "../../Routes/Path";
 
-import MainHeader from './MainHeader';
-import NavLinks from './NavLinks';
-import SideDrawer from './SideDrawer';
-import './MainNavigation.css';
-
-const MainNavigation = props => {
+const MainNavigation = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const openDrawerHandler = () => {
+    return setIsDrawerOpen(true);
+  };
+  const closeDrawerHandler = () => {
+    return setIsDrawerOpen(false);
+  };
   return (
-    <React.Fragment>
-      <SideDrawer>
-        <nav className="main-navigation__drawer-nav">
-          <NavLinks />
-        </nav>
+    <>
+      {isDrawerOpen && <Backdrop onClick={closeDrawerHandler} />}
+
+      <SideDrawer show={isDrawerOpen} onClick={closeDrawerHandler}>
+        <Navigation className="main-navigation__drawer-nav">
+          <Navigation.List>
+            <Navigation.Item>
+              <Navigation.Link to={pathName.users}>All Users</Navigation.Link>
+            </Navigation.Item>
+            <Navigation.Item>
+              <Navigation.Link to="/u1/places">My Places</Navigation.Link>
+            </Navigation.Item>
+            <Navigation.Item>
+              <Navigation.Link to="/places/new">Add Place</Navigation.Link>
+            </Navigation.Item>
+            <Navigation.Item>
+              <Navigation.Link to="auth">Authenticate</Navigation.Link>
+            </Navigation.Item>
+          </Navigation.List>
+        </Navigation>
       </SideDrawer>
+
       <MainHeader>
-        <button className="main-navigation__menu-btn">
+        <button
+          className="main-navigation__menu-btn"
+          onClick={openDrawerHandler}
+        >
           <span />
           <span />
           <span />
         </button>
         <h1 className="main-navigation__title">
-          <Link to="/">YourPlaces</Link>
+          <Link to={pathName.users}>Your Places</Link>
         </h1>
-        <nav className="main-navigation__header-nav">
-          <NavLinks />
-        </nav>
+        <Navigation className="main-navigation__header-nav">
+          <Navigation.List>
+            <Navigation.Item>
+              <Navigation.Link to={pathName.users}>All Users</Navigation.Link>
+            </Navigation.Item>
+            <Navigation.Item>
+              <Navigation.Link to="/u1/places">My Places</Navigation.Link>
+            </Navigation.Item>
+            <Navigation.Item>
+              <Navigation.Link to="/places/new">Add Place</Navigation.Link>
+            </Navigation.Item>
+            <Navigation.Item>
+              <Navigation.Link to="auth">Authenticate</Navigation.Link>
+            </Navigation.Item>
+          </Navigation.List>
+        </Navigation>
       </MainHeader>
-    </React.Fragment>
+    </>
   );
 };
-
 export default MainNavigation;
