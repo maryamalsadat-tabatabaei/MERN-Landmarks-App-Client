@@ -1,7 +1,12 @@
 import NavigationRoutes from "./Routes/NavigationRoutes";
+import ErrorBoundry from "./shared/UIElements/ErrorBoundry";
 
 function App() {
-  return <NavigationRoutes />;
+  return (
+    <ErrorBoundry>
+      <NavigationRoutes />
+    </ErrorBoundry>
+  );
 }
 
 export default App;

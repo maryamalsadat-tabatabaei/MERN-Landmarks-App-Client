@@ -1,40 +1,30 @@
-import { useState } from "react";
-import { Navigation } from "./Navigation";
-import MainHeader from "./MainHeader";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import SideDrawer from "./../UIElements/SideDrawer";
 import Backdrop from "../UIElements/Backdrop";
-import { Link } from "react-router-dom";
-import * as pathName from "../../Routes/Path";
+import MainHeader from "./MainHeader";
+import NavLinks from "./NavLinks";
+import "./MainNavigation.css";
 
 const MainNavigation = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const openDrawerHandler = () => {
-    return setIsDrawerOpen(true);
-  };
-  const closeDrawerHandler = () => {
-    return setIsDrawerOpen(false);
-  };
-  return (
-    <>
-      {isDrawerOpen && <Backdrop onClick={closeDrawerHandler} />}
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
-      <SideDrawer show={isDrawerOpen} onClick={closeDrawerHandler}>
-        <Navigation className="main-navigation__drawer-nav">
-          <Navigation.List>
-            <Navigation.Item>
-              <Navigation.Link to={pathName.users}>All Users</Navigation.Link>
-            </Navigation.Item>
-            <Navigation.Item>
-              <Navigation.Link to="/u1/places">My Places</Navigation.Link>
-            </Navigation.Item>
-            <Navigation.Item>
-              <Navigation.Link to="/places/new">Add Place</Navigation.Link>
-            </Navigation.Item>
-            <Navigation.Item>
-              <Navigation.Link to="auth">Authenticate</Navigation.Link>
-            </Navigation.Item>
-          </Navigation.List>
-        </Navigation>
+  const openDrawerHandler = () => {
+    setDrawerIsOpen(true);
+  };
+
+  const closeDrawerHandler = () => {
+    setDrawerIsOpen(false);
+  };
+
+  return (
+    <React.Fragment>
+      {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
+      <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
+        <nav className="main-navigation__drawer-nav">
+          <NavLinks />
+        </nav>
       </SideDrawer>
 
       <MainHeader>
@@ -47,26 +37,14 @@ const MainNavigation = () => {
           <span />
         </button>
         <h1 className="main-navigation__title">
-          <Link to={pathName.users}>Your Places</Link>
+          <Link to="/">YourPlaces</Link>
         </h1>
-        <Navigation className="main-navigation__header-nav">
-          <Navigation.List>
-            <Navigation.Item>
-              <Navigation.Link to={pathName.users}>All Users</Navigation.Link>
-            </Navigation.Item>
-            <Navigation.Item>
-              <Navigation.Link to="/u1/places">My Places</Navigation.Link>
-            </Navigation.Item>
-            <Navigation.Item>
-              <Navigation.Link to="/places/new">Add Place</Navigation.Link>
-            </Navigation.Item>
-            <Navigation.Item>
-              <Navigation.Link to="auth">Authenticate</Navigation.Link>
-            </Navigation.Item>
-          </Navigation.List>
-        </Navigation>
+        <nav className="main-navigation__header-nav">
+          <NavLinks />
+        </nav>
       </MainHeader>
-    </>
+    </React.Fragment>
   );
 };
+
 export default MainNavigation;

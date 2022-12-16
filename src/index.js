@@ -3,15 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import ErrorBoundry from "./shared/UIElements/ErrorBoundry";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   // <React.StrictMode>
-  <ErrorBoundry>
-    <App />
-  </ErrorBoundry>
+  <App />
   // </React.StrictMode>
 );
 

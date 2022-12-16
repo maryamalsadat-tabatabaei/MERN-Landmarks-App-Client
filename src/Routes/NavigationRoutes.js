@@ -14,7 +14,7 @@ const Users = lazy(() => import("../components/users/Users"));
 const UserPlaces = lazy(() => import("../components/places/UserPlaces"));
 const CreatePlace = lazy(() => import("../components/places/NewPlaces"));
 const UpdatePlace = lazy(() => import("../components/places/UpdatePlace"));
-const PageNotFound = lazy(() => import("../components/404/404"));
+const ErrorPage = lazy(() => import("../components/ErrorPage/ErrorPage"));
 
 const NavigationRoutes = () => {
   return (
@@ -25,13 +25,13 @@ const NavigationRoutes = () => {
           <Routes>
             <Route path={pathName.users} element={<Users />} />
             <Route path={pathName.userPlaces} element={<UserPlaces />} />
+            <Route path={pathName.createPlace} element={<CreatePlace />} />
+            <Route path={pathName.getPlaceById} element={<UpdatePlace />} />
+            <Route path={pathName.notFound} element={<ErrorPage />} />
             <Route
               path={pathName.errorPage}
               element={<Navigate to={pathName.notFound} replace />}
             />
-            <Route path={pathName.createPlace} element={<CreatePlace />} />
-            <Route path={pathName.getPlaceById} element={<UpdatePlace />} />
-            {/* <Route path={pathName.notFound} element={<PageNotFound />} /> */}
           </Routes>
         </Suspense>
       </main>
