@@ -5,6 +5,7 @@ import Input from "../../shared/FormElements/Input";
 import Button from "../../shared/FormElements/Button";
 import Spinner from "./../../shared/UIElements/Spinner";
 import ErrorModal from "./../../shared/UIElements/ErrorModal";
+import ImageUpload from "../../shared/FormElements/ImageUpload";
 import { useHttpClient } from "./../../shared/hooks/http-hook";
 import {
   VALIDATOR_EMAIL,
@@ -41,6 +42,7 @@ const Auth = () => {
         {
           ...formState.inputs,
           name: undefined,
+          image: undefined,
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -52,6 +54,7 @@ const Auth = () => {
             value: "",
             isValid: false,
           },
+          image: { value: null, isValid: false },
         },
         false
       );
@@ -80,17 +83,15 @@ const Auth = () => {
       } catch (err) {}
     } else {
       try {
+        const formData = new FormData();
+        formData.append("name", formState.inputs.name.value);
+        formData.append("email", formState.inputs.email.value);
+        formData.append("password", formState.inputs.password.value);
+        formData.append("image", formState.inputs.image.value);
         const responseData = await sendRequest(
           "http://localhost:8000/api/users/signup",
           "POST",
-          JSON.stringify({
-            name: formState.inputs.name.value,
-            email: formState.inputs.email.value,
-            password: formState.inputs.password.value,
-          }),
-          {
-            "Content-Type": "application/json",
-          }
+          formData
         );
 
         console.log("responseDart", responseData);
@@ -117,6 +118,14 @@ const Auth = () => {
               validators={[VALIDATOR_REQUIRE()]}
               errorText="Please enter a name."
               onInput={inputHandler}
+            />
+          )}
+          {!isLoginMode && (
+            <ImageUpload
+              center
+              id="image"
+              onInput={inputHandler}
+              errorText="Please pick an image."
             />
           )}
           <Input

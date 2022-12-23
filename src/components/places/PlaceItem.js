@@ -34,10 +34,6 @@ const PlaceItem = (props) => {
     } catch (err) {}
   };
 
-  if (isLoading) {
-    return <Spinner />;
-  }
-
   return (
     <>
       <ErrorModal error={error} onClear={clearError} />
@@ -79,7 +75,10 @@ const PlaceItem = (props) => {
         <Card className="place-item__content">
           {isLoading && <Spinner asOverlay />}
           <div className="place-item__image">
-            <img src={props.image} alt={props.title} />
+            <img
+              src={`http://localhost:8000/${props.image}`}
+              alt={props.title}
+            />
           </div>
           <div className="place-item__info">
             <h2>{props.title}</h2>
