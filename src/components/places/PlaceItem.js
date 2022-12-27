@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import Map from "../../shared/UIElements/Map";
 import Card from "../../shared/UIElements/Card";
 import Modal from "../../shared/UIElements/Modal";
@@ -11,7 +10,6 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import "./PlaceItem.css";
 
 const PlaceItem = (props) => {
-  const navigate = useNavigate();
   const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -28,7 +26,9 @@ const PlaceItem = (props) => {
     try {
       await sendRequest(
         `http://localhost:8000/api/places/${props.id}`,
-        "DELETE"
+        "DELETE",
+        null,
+        { Authorization: "Bearer" + auth.token }
       );
       props.onDelete(props.id);
     } catch (err) {}

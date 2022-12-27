@@ -74,11 +74,13 @@ const Auth = () => {
             email: formState.inputs.email.value,
             password: formState.inputs.password.value,
           }),
-          { "Content-Type": "application/json" }
+          {
+            "Content-Type": "application/json",
+          }
         );
 
         console.log("responseDart", responseData);
-        auth.login(responseData.userId);
+        auth.login(responseData.userId, responseData.token);
         navigate("/");
       } catch (err) {}
     } else {
@@ -95,7 +97,7 @@ const Auth = () => {
         );
 
         console.log("responseDart", responseData);
-        auth.login(responseData.userId);
+        auth.login(responseData.userId, responseData.token);
         navigate("/");
       } catch (err) {}
     }
