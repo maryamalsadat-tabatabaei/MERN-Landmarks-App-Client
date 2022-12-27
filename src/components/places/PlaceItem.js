@@ -28,7 +28,7 @@ const PlaceItem = (props) => {
         `http://localhost:8000/api/places/${props.id}`,
         "DELETE",
         null,
-        { Authorization: "Bearer" + auth.token }
+        { Authorization: "Bearer " + auth.token }
       );
       props.onDelete(props.id);
     } catch (err) {}
@@ -73,7 +73,7 @@ const PlaceItem = (props) => {
       </Modal>
       <li className="place-item">
         <Card className="place-item__content">
-          {isLoading && <Spinner asOverlay />}
+          {isLoading && <Spinner />}
           <div className="place-item__image">
             <img
               src={`http://localhost:8000/${props.image}`}

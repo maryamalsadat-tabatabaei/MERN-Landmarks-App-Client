@@ -48,10 +48,9 @@ const NewPlace = () => {
       formData.append("title", formState.inputs.title.value);
       formData.append("description", formState.inputs.description.value);
       formData.append("address", formState.inputs.address.value);
-      formData.append("creator", formState.inputs.creator.value);
       formData.append("image", formState.inputs.image.value);
       await sendRequest("http://localhost:8000/api/places", "POST", formData, {
-        Authorization: "Bearer" + auth.token,
+        Authorization: "Bearer " + auth.token,
       });
       navigate("/");
     } catch (err) {}
@@ -61,7 +60,7 @@ const NewPlace = () => {
     <>
       <ErrorModal error={error} onClear={clearError} />
       <form className="place-form" onSubmit={placeSubmitHandler}>
-        {isLoading && <Spinner asOverlay />}
+        {isLoading && <Spinner />}
         <Input
           id="title"
           element="input"

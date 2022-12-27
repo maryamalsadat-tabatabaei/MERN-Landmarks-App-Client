@@ -78,8 +78,6 @@ const Auth = () => {
             "Content-Type": "application/json",
           }
         );
-
-        console.log("responseDart", responseData);
         auth.login(responseData.userId, responseData.token);
         navigate("/");
       } catch (err) {}
@@ -95,8 +93,6 @@ const Auth = () => {
           "POST",
           formData
         );
-
-        console.log("responseDart", responseData);
         auth.login(responseData.userId, responseData.token);
         navigate("/");
       } catch (err) {}
