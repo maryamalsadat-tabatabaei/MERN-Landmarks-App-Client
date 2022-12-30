@@ -10,3 +10,5 @@ export const notFound = "/404";
 export const users = "/";
 export const selectedPlaces = "/:uid/places";
 export const userPlaces = "/:userId/places";
+export const resetPassword = "/auth/resetPassword";
+export const newPassword = "/user/resetPassword/:token";

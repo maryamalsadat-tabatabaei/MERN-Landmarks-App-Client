@@ -12,6 +12,7 @@ import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from "../../shared/util/Validators";
+import { resetPassword } from "./../../Routes/Path";
 import { useForm } from "../../shared/hooks/form-hook";
 import { AuthContext } from "../../shared/context/auth-context";
 import "./Auth.css";
@@ -148,9 +149,12 @@ const Auth = () => {
             {isLoginMode ? "LOGIN" : "SIGNUP"}
           </Button>
         </form>
-        <Button inverse onClick={switchModeHandler}>
-          SWITCH TO {isLoginMode ? "SIGNUP" : "LOGIN"}
-        </Button>
+        <div className="authentication__action">
+          <Button inverse onClick={switchModeHandler}>
+            SWITCH TO {isLoginMode ? "SIGNUP" : "LOGIN"}
+          </Button>
+          {isLoginMode && <Button to={resetPassword}>Reset Password</Button>}
+        </div>
       </Card>
     </>
   );

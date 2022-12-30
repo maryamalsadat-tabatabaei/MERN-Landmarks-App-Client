@@ -15,13 +15,13 @@ export default class ErrorBoundary extends React.Component {
     // You can also log the error to an error reporting service
 
     console.log("Error has occured!", error, errorInfo);
-    window.location.replace("/");
+    // window.location.replace("/");
   }
 
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1>{this.state.error.message}</h1>;
+      return <h1 className="center">{this.state.error}</h1>;
     }
 
     return this.props.children;

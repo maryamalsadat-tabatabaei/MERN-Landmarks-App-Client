@@ -1,10 +1,5 @@
 import { Suspense, lazy, useContext } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import * as pathName from "./Path";
 import MainNavigation from "../shared/Navigation/MainNavigation";
 import Spinner from "../shared/UIElements/Spinner";
@@ -14,6 +9,8 @@ const Users = lazy(() => import("../components/users/Users"));
 const UserPlaces = lazy(() => import("../components/places/UserPlaces"));
 const CreatePlace = lazy(() => import("../components/places/NewPlaces"));
 const UpdatePlace = lazy(() => import("../components/places/UpdatePlace"));
+const Reset = lazy(() => import("../components/users/Reset"));
+const NewPassword = lazy(() => import("../components/users/NewPassword"));
 const Auth = lazy(() => import("../components/users/Auth"));
 const ErrorPage = lazy(() => import("../components/ErrorPage/ErrorPage"));
 
@@ -25,6 +22,8 @@ const NavigationRoutes = () => {
       <Route path={pathName.userPlaces} element={<UserPlaces />} />
       <Route path={pathName.createPlace} element={<CreatePlace />} />
       <Route path={pathName.getPlaceById} element={<UpdatePlace />} />
+      <Route path={pathName.resetPassword} element={<Reset />} />
+      <Route path={pathName.newPassword} element={<NewPassword />} />
       <Route path={pathName.notFound} element={<ErrorPage />} />
       <Route
         path={pathName.errorPage}
@@ -36,6 +35,9 @@ const NavigationRoutes = () => {
       <Route path={pathName.users} element={<Users />} />
       <Route path={pathName.userPlaces} element={<UserPlaces />} />
       <Route path={pathName.authentication} element={<Auth />} />
+      <Route path={pathName.resetPassword} element={<Reset />} />
+      <Route path={pathName.newPassword} element={<NewPassword />} />
+
       <Route
         path={pathName.errorPage}
         element={<Navigate to={pathName.authentication} replace />}
@@ -43,12 +45,12 @@ const NavigationRoutes = () => {
     </Routes>
   );
   return (
-    <Router>
+    <>
       <MainNavigation />
       <main>
         <Suspense fallback={<Spinner />}>{routes}</Suspense>
       </main>
-    </Router>
+    </>
   );
 };
 export default NavigationRoutes;

@@ -1,0 +1,24 @@
+.pagination {
+  margin-top: 2rem;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 2rem;
+  width: 90%;
+  max-width: 40rem;
+  background-color: #fff;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: #ff0055;
+  padding: 0.5rem;
+  border: 1px solid #ff0055;
+  margin: 0 1rem;
+}
+
+.pagination a:hover,
+.pagination a:active,
+.pagination a.active {
+  background: #ff0055;
+  color: white;
+}
