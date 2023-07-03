@@ -68,10 +68,3 @@ This project is based on Maximilian Schwarzmüller's tutorial on Udemy React, No
 These additional features enhance the capabilities of the original project and provide added value in terms of functionality, performance, or user experience. They were implemented based on the requirements and insights gained from the course, as well as personal experimentation and problem-solving.
 
 I would like to express my gratitude to the Based on Maximilian Schwarzmüller's course instructors for their teachings and inspiration, which played a significant role in the development of this project. Please note that this project is not affiliated with or endorsed by Maximilian Schwarzmüller, and any issues or inquiries regarding this modified version should be directed to my GitHub repository.
-
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
