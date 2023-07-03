@@ -69,11 +69,6 @@ These additional features enhance the capabilities of the original project and p
 
 I would like to express my gratitude to the Based on Maximilian Schwarzmüller's course instructors for their teachings and inspiration, which played a significant role in the development of this project. Please note that this project is not affiliated with or endorsed by Maximilian Schwarzmüller, and any issues or inquiries regarding this modified version should be directed to my GitHub repository.
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
