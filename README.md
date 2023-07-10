@@ -24,8 +24,8 @@ This is a Client-side React project for the MERN (MongoDB, Express.js, React, an
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/maryamalsadat-tabatabaei/mern-landmarks-app.git`
-2. Navigate to the project directory: `cd mern-landmarks-app`
+1. Clone the repository: `git clone https://github.com/maryamalsadat-tabatabaei/mern-landmarks-app-client.git`
+2. Navigate to the project directory: `cd mern-landmarks-app-client`
 3. Install dependencies: `npm install`
 4. Set up the required environment variables for configuration.
 5. Start the development server: `npm start`
@@ -33,18 +33,6 @@ This is a Client-side React project for the MERN (MongoDB, Express.js, React, an
 
 
 ## Configuration
-
-To configure the project, create .env file and add the following variables:
-
-- GOOGLE_MAP_API_KEY
-- MONGO_DB_PASSWORD
-- MONGO_DB_USER
-- MONGO_DB_COLLECTION
-- MONGO_DB_PORT
-- JWT_SECRET
-- GOOGLE_OAUTH_CLIENT_ID
-- GOOGLE_OAUTH_CLIENT_SECRET
-- SESSION_COOKIE_KEY
 
 To configure the client, open the client folder and .env file and add the following variables:
 
